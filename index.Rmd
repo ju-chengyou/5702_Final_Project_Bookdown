@@ -1,7 +1,7 @@
 --- 
 title: "EDAV Final Project Group 23"
 author: "Shaofeng Wu, Chengyou Ju, Mingrui Liu, Yujing Song"
-date: "`r Sys.Date()`"
+date: "2019-12-12"
 site: bookdown::bookdown_site
 ---
 
@@ -12,4 +12,4 @@ New York, a charming place which is attracting people all around city, has thous
 
 As graduate students who are actively seeking jobs and internships, we come up with the idea that we can choose a topic related to the current employment condition in New York. After doing some research, we decide to focus on studying the recent job postings in New York. We want to see, for instance, salary ranges for different categories of jobs, what skills are preferred by a particular kind of jobs, or if there is a relationship between job locations and salaries.
 
-This is the link of GitHub that contains all our work for the project https://github.com/Alexsfwu/5702-final-project.
+This is the link of GitHub that contains all our work for the project https://github.com/ju-chengyou/5702_Final_Project_Bookdown.

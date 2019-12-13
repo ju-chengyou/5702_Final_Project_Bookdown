@@ -117,7 +117,7 @@
 <div id="missing-values" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> Missing Values</h1>
 <p>As mentioned above, we fill all empty slots in the original dataset with NAs. Then we draw a graph using <code>extracat::visna</code> to visualize the missing patterns of our dataset. The columns represent the 28 variables and the rows the missing patterns. The cells for the variables with missing values in a pattern are drawn in blue. The variables and patterns have been ordered by numbers of missings on both rows and columns. The bars beneath the columns show the proportions of missings by variable and the bars on the right show the relative frequencies of patterns.</p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>From the plot, we can tell that all values under the column <strong>Recruitment Contact</strong> are missing. Therefore, we decide to drop this column from our data frame. For other columns, we will keep these NAs for now, but we try not to make our analysis depend heavily on the column <strong>Hours.shift</strong> ,<strong>Post.until</strong> and <strong>Work Location 1</strong> because those columns have lots of missings.
 Furthermore, we need to be careful when to delete NA values. Because in our dataset we have lots of categorical variables and NA in those categorical variables might be one of the factor levels. For example in the <strong>level</strong> variable, the NA values mean entry-level and we transformed those NA values as one-factor level.</p>
 
