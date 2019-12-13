@@ -93,6 +93,7 @@ labs(x = "Category", y = "Annual Salary") +
 theme(plot.title = element_text(hjust = 0.5)) +
   coord_flip()
 ```
+
 This boxplot gives us a general idea of the salary distribution for different kinds of jobs from the highest to the lowest mean salaries. For instance, we can see that jobs of Building Operations & Maintenance, in general, have lower salaries than those of Information Technology & Telecommunications. We can also see a general pattern that the higher the Annual Salary, the wider the range of the Salaries.
 
 
@@ -131,6 +132,7 @@ ggplot(df_popular, aes(x=month,y=fct_reorder(Job.Category,count),fill=Job.Catego
   ggtitle("Count of Job Postings through Months")+
   theme(plot.title = element_text(hjust = 0.5))
 ```
+
 The plot above shows us the change in the number of postings of popular categories from January to December. As we can see, most of the job postings are posted between August to December, which makes sense because most recruiting season happens during the fall. We can also see that some of the job categories have demand in other seasons. For example, Public Safty, Inspections, and Enforcement also have some recruiting demand in May. Some of the job categories have stable recruiting demand throughout the whole year, such as Maintenance, Architecture, and Engineering.
 
 
@@ -317,6 +319,7 @@ tech_job %>%
   theme(plot.title = element_text(hjust = 0.5))
 
 ```
+
 From the bar plot we can see 79% of the technology job postings are full time jobs, and only 5% of them are part time. The remaining of them do not specify full time or part time.
 
 
@@ -343,6 +346,7 @@ tech_job %>%
   theme(plot.title = element_text(hjust = 0.5))
 
 ```
+
 From this bar plot, we can see almost all (94%) technology jobs are annully paid, 5% of them are hourly paid, and only 1% are daily paid. 
 
 ```{r}
@@ -355,6 +359,7 @@ tech_job %>%
   geom_bar(color = "black", fill = "orange") +
   coord_flip()
 ```
+
 To take a closer view, we look into the Job Count w.r.t Civil Service Title. From the plot above, we can see that for tech jobs, Computer System Manager is the most frequent. It occurs almost 50 times, whhich almost doubles the count of the second most title. The fewest civil service titles include Supervising Computer Service and Staff Analyst.
 
 
@@ -368,6 +373,7 @@ tech_job %>%
   geom_bar(stat = 'count',color = "black", fill = "orange") +
   coord_flip()
 ```
+
 Here we are looking at the relationship between job count and locations. From the bar plot above, we can see that most tech jobs in our data set are located at 255 greenwich street, 2 metro tech, and 355 adam street. After searching these locations on a map, we see that the first 10 locations in our plot are clustered. Therefore, we tend to believe that tech jobs are location sensitive. In other words, tech jobs are located within a certain area. More details can be found in an interactive map later in the book.
 
 ```{r}
@@ -381,4 +387,5 @@ tech_job %>%
   theme(plot.title = element_text(hjust = 0.5)) + 
   geom_point(color = "orange")
 ```
+
 This Cleveland dot plot shows the relationship between average annual salaries and civil service title. The salary ranges from less thatn 4000 dollars to almost 12000 dollars. We can also see that the annual salary of Aministrative Business Promot is a lot higher than any other jobs.
