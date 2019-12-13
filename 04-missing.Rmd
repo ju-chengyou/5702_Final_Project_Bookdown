@@ -11,6 +11,7 @@ visna(job, sort='b')
 ```
 
 From the plot, we can tell that all values under the column **Recruitment Contact** are missing. Therefore, we decide to drop this column from our data frame. For other columns, we will keep these NAs for now, but we try not to make our analysis depend heavily on the column **Hours.shift** ,**Post.until** and **Work Location 1** because those columns have lots of missings.
+Furthermore, we need to be careful when to delete NA values. Because in our dataset we have lots of categorical variables and NA in those categorical variables might be one of the factor levels. For example in the **level** variable, the NA values mean entry-level and we transformed those NA values as one-factor level.
 
 ```{r}
 # Drop Recuitment Contact
