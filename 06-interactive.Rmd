@@ -1,6 +1,10 @@
 # Interactive Component
 
-For this interactive plot, we added two selection bars and one slide bar. In that way, you can choose the category, agency and the range of the annual salary of the job postings. You can also click on the circles to see the exact job titles, annual salaries, etc.
+We created a shiny app to draw a interactive plot. The package that we used is called `leaflet` and it takes longitudes and latitudes of different data points to draw a map. Because a lot of data points have the exact longitudes and latitudes, if we plot the points directly, some points will be overlapping. In order to solve this issue, we applied a spider graph and all the points with the same address could be expanded if a user clicks on a circle.
+
+For this interactive plot, we added two selection bars and one slide bar. In that way, you can choose the category, agency and the range of the annual salary of the job postings. You can also click on the circles to see the exact job titles, annual salaries, etc. 
+
+For the legend, it ranges from the lowest salary to the highest salary. In terms of the color of the legend, the lower a salary is, the more blue a point is; on the contrary, the higher a salary is, the redder a point is. 
 
 For better viewing experience, you can also interact with our graph directly by clicking on this link https://jobpostingmap.shinyapps.io/5702-final-project/.
 
