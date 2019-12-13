@@ -3,7 +3,7 @@
 ## Lessons Learned
 After completing this final project, we believe that we gained a better understanding of all the concepts that we have learned in this semester. Starting from researching online, we found this NYC Job Postings dataset and exported a `.csv` file for the use of our project. Then, leveraging the data processing skills we have learned, we cleaned up our data through properly dealing with NAs, removing duplicated elements that we did not need, and extracting more information such as locations by taking advantage of Google API. For the main part of project, we used many types of graphs we learnt in this semester, such as bar chart, box plot, histogram, Ridgeline plot, and Cleveland dot plot. We also took advantage of the knowledge learnt from the Community Contribution assignment and drew several Word Cloud graphs to showcase our skills in dealing with text data. Last but not least, for the interactive component, we utilized the Shiny app and created an interactive graph, from which users can check job salaries of the categories, agencies, or full/part time they select. Overall, we have learnt a lot through EDAV in this semester, and we really enjoy the process.
 
-## Summary of Studies the Dataset
+## Summary of Studies on the Dataset
 Here is a breif summary of some findings we got for the dataset.
 
 When compared full-time jobs with part-time jobs, overall, the distributions of two types of job, are not have a huge differences, but the amount of part-time jobs are greatly less than full-time jobs. Most of jobs with the salary lower than 150k/yr and the range of these jobs' salaries are less than 50k. When the salary range over 50k, there is an obvious positive relationship between these two.

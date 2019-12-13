@@ -24,7 +24,7 @@
 <meta name="author" content="Shaofeng Wu, Chengyou Ju, Mingrui Liu, Yujing Song" />
 
 
-<meta name="date" content="2019-12-12" />
+<meta name="date" content="2019-12-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -71,7 +71,7 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Final_Proj_23</a></li>
+<li><a href="./">EDAV_Final_Project</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
@@ -91,7 +91,10 @@
 <li class="chapter" data-level="5.6" data-path="results.html"><a href="results.html#more-studies-on-tech-jobs"><i class="fa fa-check"></i><b>5.6</b> More Studies on Tech Jobs</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive Component</a></li>
-<li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
+<li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a><ul>
+<li class="chapter" data-level="7.1" data-path="conclusion.html"><a href="conclusion.html#lessons-learned"><i class="fa fa-check"></i><b>7.1</b> Lessons Learned</a></li>
+<li class="chapter" data-level="7.2" data-path="conclusion.html"><a href="conclusion.html#summary-of-studies-the-dataset"><i class="fa fa-check"></i><b>7.2</b> Summary of Studies the Dataset</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -113,7 +116,18 @@
             <section class="normal" id="section-">
 <div id="conclusion" class="section level1">
 <h1><span class="header-section-number">Chapter 7</span> Conclusion</h1>
+<div id="lessons-learned" class="section level2">
+<h2><span class="header-section-number">7.1</span> Lessons Learned</h2>
+<p>After completing this final project, we believe that we gained a better understanding of all the concepts that we have learned in this semester. Starting from researching online, we found this NYC Job Postings dataset and exported a <code>.csv</code> file for the use of our project. Then, leveraging the data processing skills we have learned, we cleaned up our data through properly dealing with NAs, removing duplicated elements that we did not need, and extracting more information such as locations by taking advantage of Google API. For the main part of project, we used many types of graphs we learnt in this semester, such as bar chart, box plot, histogram, Ridgeline plot, and Cleveland dot plot. We also took advantage of the knowledge learnt from the Community Contribution assignment and drew several Word Cloud graphs to showcase our skills in dealing with text data. Last but not least, for the interactive component, we utilized the Shiny app and created an interactive graph, from which users can check job salaries of the categories, agencies, or full/part time they select. Overall, we have learnt a lot through EDAV in this semester, and we really enjoy the process.</p>
+</div>
+<div id="summary-of-studies-the-dataset" class="section level2">
+<h2><span class="header-section-number">7.2</span> Summary of Studies the Dataset</h2>
+<p>Here is a breif summary of some findings we got for the dataset.</p>
+<p>When compared full-time jobs with part-time jobs, overall, the distributions of two types of job, are not have a huge differences, but the amount of part-time jobs are greatly less than full-time jobs. Most of jobs with the salary lower than 150k/yr and the range of these jobs’ salaries are less than 50k. When the salary range over 50k, there is an obvious positive relationship between these two.</p>
+<p>Planning Maintenance and Producement Building Operations have a extremly high annual salary mean. Human Resource Finance and Health Policy are also obviously distinguished with others since their annual are over 100k. Most job categories with the salary between 60k to 80k dollars per year, the categories in this range are mostly related with technology, innovation, finance, and service. The most popular positions are all in this range, and the top 30 categories has the annual salary range between 100k to 200k dollars per year. For the salary group less than 60k, they also have low annual salary range, their sizes of needness online are also small.</p>
+<p>Detailed results can be found in the previous chapters.</p>
 
+</div>
 </div>
             </section>
 

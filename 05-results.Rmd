@@ -127,7 +127,7 @@ df_popular<-df%>%
 ```{r}
 ggplot(df_popular, aes(x=month,y=fct_reorder(Job.Category,count),fill=Job.Category)) +
   geom_density_ridges(scale = 3, show.legend = FALSE) + theme_ridges() +
-  labs(x = "Month", y = "Count") +
+  labs(x = "Month", y = "Job Category") +
   scale_x_continuous(name="month",breaks = seq(1,12,1), limits=c(0, 12)) +
   ggtitle("Count of Job Postings through Months")+
   theme(plot.title = element_text(hjust = 0.5))

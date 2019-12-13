@@ -24,7 +24,7 @@
 <meta name="author" content="Shaofeng Wu, Chengyou Ju, Mingrui Liu, Yujing Song" />
 
 
-<meta name="date" content="2019-12-12" />
+<meta name="date" content="2019-12-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -71,7 +71,7 @@
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Final_Proj_23</a></li>
+<li><a href="./">EDAV_Final_Project</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
@@ -91,7 +91,10 @@
 <li class="chapter" data-level="5.6" data-path="results.html"><a href="results.html#more-studies-on-tech-jobs"><i class="fa fa-check"></i><b>5.6</b> More Studies on Tech Jobs</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive Component</a></li>
-<li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
+<li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a><ul>
+<li class="chapter" data-level="7.1" data-path="conclusion.html"><a href="conclusion.html#lessons-learned"><i class="fa fa-check"></i><b>7.1</b> Lessons Learned</a></li>
+<li class="chapter" data-level="7.2" data-path="conclusion.html"><a href="conclusion.html#summary-of-studies-the-dataset"><i class="fa fa-check"></i><b>7.2</b> Summary of Studies the Dataset</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -113,7 +116,9 @@
             <section class="normal" id="section-">
 <div id="interactive-component" class="section level1">
 <h1><span class="header-section-number">Chapter 6</span> Interactive Component</h1>
+<p>We created a shiny app to draw a interactive plot. The package that we used is called <code>leaflet</code> and it takes longitudes and latitudes of different data points to draw a map. Because a lot of data points have the exact longitudes and latitudes, if we plot the points directly, some points will be overlapping. In order to solve this issue, we applied a spider graph and all the points with the same address could be expanded if a user clicks on a circle.</p>
 <p>For this interactive plot, we added two selection bars and one slide bar. In that way, you can choose the category, agency and the range of the annual salary of the job postings. You can also click on the circles to see the exact job titles, annual salaries, etc.</p>
+<p>For the legend, it ranges from the lowest salary to the highest salary. In terms of the color of the legend, the lower a salary is, the more blue a point is; on the contrary, the higher a salary is, the redder a point is.</p>
 <p>For better viewing experience, you can also interact with our graph directly by clicking on this link <a href="https://jobpostingmap.shinyapps.io/5702-final-project/" class="uri">https://jobpostingmap.shinyapps.io/5702-final-project/</a>.</p>
 <iframe src = "https://jobpostingmap.shinyapps.io/5702-final-project/" height=700px width=1100px />
 
