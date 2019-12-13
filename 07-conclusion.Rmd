@@ -9,3 +9,5 @@ Here is a breif summary of some findings we got for the dataset.
 When compared full-time jobs with part-time jobs, overall, the distributions of two types of job, are not have a huge differences, but the amount of part-time jobs are greatly less than full-time jobs. Most of jobs with the salary lower than 150k/yr and the range of these jobs' salaries are less than 50k. When the salary range over 50k, there is an obvious positive relationship between these two.
 
 Planning Maintenance and Producement Building Operations have a extremly high annual salary mean. Human Resource Finance and Health Policy are also obviously distinguished with others since their annual are over 100k. Most job categories with the salary between 60k to 80k dollars per year, the categories in this range are mostly related with technology, innovation, finance, and service. The most popular positions are all in this range, and the top 30 categories has the annual salary range between 100k to 200k dollars per year. For the salary group less than 60k, they also have low annual salary range, their sizes of needness online are also small.
+
+Detailed results can be found in the previous chapters.
