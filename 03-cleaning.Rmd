@@ -28,5 +28,7 @@ library(wordcloud2)
 job <- read.csv("data/raw/NYC_Jobs.csv") # Read data from csv file
 job[job == ''] <- NA # Set empty slots as NAs
 
+df_popular = read_csv('data/clean/popular_cate.csv')
+
 job <-job[!duplicated(job), ]
 ```
