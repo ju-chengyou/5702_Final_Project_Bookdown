@@ -10,7 +10,7 @@ library(extracat)
 visna(job, sort='b')
 ```
 
-From the plot, we can tell that all values under the column **Recruitment Contact** are missing. Therefore, we decide to drop this column from our data frame. For other columns, we will keep these NAs for now.
+From the plot, we can tell that all values under the column **Recruitment Contact** are missing. Therefore, we decide to drop this column from our data frame. For other columns, we will keep these NAs for now, but we try not to make our analysis depend heavily on the column **Hours.shift** ,**Post.until** and **Work Location 1** because those columns have lots of missings.
 
 ```{r}
 # Drop Recuitment Contact
