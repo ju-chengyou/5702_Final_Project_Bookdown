@@ -3,6 +3,10 @@
 
 Since we want to study the total number of jobs for each job category and one particular job could belong to multiple categories, we extract all the categories related to a job, seperate them, and create a new data frame called `popular_category`, which stores the counts of different job categories. Then, in order to visualize the numbers of job postings among different categories, we draw a descending horizontal bar chart based on his new data frame. 
 
+```{r, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = FALSE)
+```
+
 ```{r}
 categoryList <- job %>%
   filter(!is.na(Job.Category)) %>%
@@ -33,7 +37,7 @@ ggplot(popular_category, aes(x = fct_reorder(Category,count), y = count)) +
 From the graphs below, we can tell that **Architecture** and **Engineering** have the most job postings, while **Procurement Policy** and **Social Services** have the fewest.
 
 
-## Distributions of Salaries
+## Distributions of Salaries by Payroll Types
 
 We also want to study the distributions of salaries among different types of payroll. Since there are three payroll types in our data set, which are **Annual**, **Daily** and **Hourly**, we will draw three histograms to visualize the distributions. We take the mean of `Salary Range From` and `Salary Range To` as our salary for the histogram at the x-axis.
 
@@ -66,10 +70,10 @@ ggplot(data = Hourly, aes(Hourly$salary)) +
 ```
 
 From these three plots above, we have the following obeservations: 
-* For most of the jobs, the salaries are given annually. There are also some jobs which have hourly salaries. Only a few of those jobs have daily salaries. 
-* For salaries calculated annually, it has approximately right-skewed normal distribution, which means that most jobs do not have a relatively high salaries.
-* For salaries calculated daily, there is no specific pattern regarding the distribution. Some jobs have relatively low daily salaries, while others have much higher salaries. 
-* For salaries calculated hourly, most of them has a relatively low value, but there are still some jobs have relatively high hourly salaries. 
+1. For most of the jobs, the salaries are given annually. There are also some jobs which have hourly salaries. Only a few of those jobs have daily salaries. 
+2. For salaries calculated annually, it has approximately right-skewed normal distribution, which means that most jobs do not have a relatively high salaries.
+3. For salaries calculated daily, there is no specific pattern regarding the distribution. Some jobs have relatively low daily salaries, while others have much higher salaries. 
+4. For salaries calculated hourly, most of them has a relatively low value, but there are still some jobs have relatively high hourly salaries. 
 
 ```{r}
 temp = Hourly %>% 
@@ -78,6 +82,21 @@ temp = Hourly %>%
 
 Then, We also look into our data and find out more information about our salary distribution. For insace, for houly paied jobs, Stationary Engineer and City Medical Specialist have extremly high hourly salaries, while College Aide has low hourly salaries.
 
+
+## Distribution of Salaries by Categories
+```{r}
+## all job posting with only category, anuual salary and job id
+ggplot(df_popular,aes(x = reorder(Job.Category,Annual_salary,FUN=mean), y = Annual_salary)) +
+geom_boxplot(color = "black", fill = "orange") +
+ggtitle("Distribution of Salaries w.r.t Different Categories") + 
+labs(x = "Category", y = "Annual Salary") + 
+theme(plot.title = element_text(hjust = 0.5)) +
+  coord_flip()
+```
+This boxplot gives us a general idea of the salary distribution for different kinds of jobs from the highest to the lowest mean salaries. For instance, we can see that jobs of Building Operations & Maintenance, in general, have lower salaries than those of Information Technology & Telecommunications. We can also see a general pattern that the higher the Annual Salary, the wider the range of the Salaries.
+
+
+## Job Postings Count Trend In One Year
 ```{r}
 #converting salary on hourly scale anddaily scale to yearly scale
 #no of working days in US in a year: 261 source: 
@@ -103,22 +122,16 @@ df_popular<-df%>%
   group_by(Job.Category,month)%>%
   mutate(count = n())
 ```
+
 ```{r}
-ggplot(df_popular, aes(x=month,y=Job.Category,fill=Job.Category))+
-  geom_density_ridges(scale = 3, show.legend = FALSE) + theme_ridges()+
-  labs(x="month",y="count")+
-  ggtitle("The counts of insects treated with different insecticides.")+
+ggplot(df_popular, aes(x=month,y=fct_reorder(Job.Category,count),fill=Job.Category)) +
+  geom_density_ridges(scale = 3, show.legend = FALSE) + theme_ridges() +
+  labs(x = "Month", y = "Count") +
+  scale_x_continuous(name="month",breaks = seq(1,12,1), limits=c(0, 12)) +
+  ggtitle("Count of Job Postings through Months")+
   theme(plot.title = element_text(hjust = 0.5))
 ```
-```{r}
-## all job posting with only category, anuual salary and job id
-ggplot(df_popular,aes(x = reorder(Job.Category,Annual_salary,FUN=mean), y = Annual_salary)) +
-geom_boxplot(color = "black", fill = "orange") +
-ggtitle("Distribution of Salaries w.r.t Different Categories") + 
-labs(x = "Category", y = "Anual Salary") + 
-theme(plot.title = element_text(hjust = 0.5)) +
-  coord_flip()
-```
+The plot above shows us the change in the number of postings of popular categories from January to December. As we can see, most of the job postings are posted between August to December, which makes sense because most recruiting season happens during the fall. We can also see that some of the job categories have demand in other seasons. For example, Public Safty, Inspections, and Enforcement also have some recruiting demand in May. Some of the job categories have stable recruiting demand throughout the whole year, such as Maintenance, Architecture, and Engineering.
 
 
 ## Word Clouds for Text Information
@@ -275,3 +288,97 @@ Also, when comparing all jobs with technological jobs, we notice that for tech j
 Meanwhile, in all these four graphs, vocabularies like *skills*, *knowledge*, *management*, *communication* appear plenty of times. This makes sense since all employers want to hire people who have solid skills and are good at communication and cooperation.
 
 Finally, in general, we find that minimum requirements of all jobs and tech jobs graphs share almost the same set of frequent words, which we believe is due to the fact that **minimum** requirements are similar for all kinds of jobs.
+
+
+## More Studies on Tech Jobs
+```{r}
+library(scales)
+tech_job = job[job$Job.Category == 'Technology, Data & Innovation', ] %>%
+  mutate(Full.Time.Part.Time.indicator = as.character(Full.Time.Part.Time.indicator)) %>%
+  mutate(Full.Time.Part.Time.indicator = if_else(is.na(Full.Time.Part.Time.indicator), "No Answer", Full.Time.Part.Time.indicator))
+
+tech_job %>%
+  #filter(!is.na(Full.Time.Part.Time.indicator)) %>%
+  #mutate_at(Full.Time.Part.Time.indicator, ~replace(., is.na(.),"No Answer" ))
+  group_by(Full.Time.Part.Time.indicator) %>%
+  mutate(FTcount = n()) %>%
+  mutate(FTportion = percent(FTcount/length(tech_job$Full.Time.Part.Time.indicator))) %>%
+  ungroup() %>%
+  ggplot(aes(Full.Time.Part.Time.indicator)) + 
+  geom_bar(color = "black", fill = "orange") +
+  ggtitle("Number of Tech Job Postings w.r.t Full/Part Time") + 
+  scale_x_discrete(labels=c("F" = "Full Time", "P" = "Part Time")) +
+  labs(x = "Full/Part Time", y = "Count") +
+  geom_text(
+    aes(label = FTportion, y =FTcount/2),
+    position = position_dodge(0.9),
+    vjust = 0
+  ) +
+  theme(plot.title = element_text(hjust = 0.5))
+
+```
+From the bar plot we can see 79% of the technology job postings are full time jobs, and only 5% of them are part time. The remaining of them do not specify full time or part time.
+
+
+```{r}
+
+tech_job = job[job$Job.Category == 'Technology, Data & Innovation', ]%>%
+  mutate(Salary.Frequency = as.character(Salary.Frequency))%>%
+  mutate(Salary.Frequency = if_else(is.na(Salary.Frequency), "Daily", Salary.Frequency))
+  
+tech_job %>%
+  #filter(!is.na(tech_job$Salary.Frequency)) %>%
+  group_by(Salary.Frequency)%>%
+  mutate(Scount = n())%>%
+  mutate(Sportion = percent(Scount/length(tech_job$Salary.Frequency)))%>%
+  ggplot(aes(Salary.Frequency)) + 
+  geom_bar(color = "black", fill = "orange") +
+  ggtitle("Number of Tech Job Postings w.r.t Salary Frequency") + 
+  labs(x = "Salary Frequency", y = "Count") +
+  geom_text(
+    aes(label = Sportion, y =Scount/2),
+    position = position_dodge(0.9),
+    vjust = 0
+  )+
+  theme(plot.title = element_text(hjust = 0.5))
+
+```
+From this bar plot, we can see almost all (94%) technology jobs are annully paid, 5% of them are hourly paid, and only 1% are daily paid. 
+
+```{r}
+tech_job %>%
+  filter(!is.na(tech_job$Civil.Service.Title)) %>%
+  ggplot(aes(fct_rev(fct_infreq(Civil.Service.Title)))) + 
+  ggtitle("Job Count w.r.t Civil Service Title") +
+  labs(x = "Civil Service Title", y = "Count") + 
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  geom_bar(color = "black", fill = "orange") +
+  coord_flip()
+```
+To take a closer view, we look into the Job Count w.r.t Civil Service Title. From the plot above, we can see that for tech jobs, Computer System Manager is the most frequent. It occurs almost 50 times, whhich almost doubles the count of the second most title. The fewest civil service titles include Supervising Computer Service and Staff Analyst.
+
+
+```{r}
+tech_job %>%
+  filter(!is.na(tech_job$Work.Location)) %>%
+  ggplot(aes(fct_rev(fct_infreq(Work.Location)))) + 
+  ggtitle("Job Count w.r.t Work Location") +
+  labs(x = "Work Location", y = "Count") + 
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  geom_bar(stat = 'count',color = "black", fill = "orange") +
+  coord_flip()
+```
+Here we are looking at the relationship between job count and locations. From the bar plot above, we can see that most tech jobs in our data set are located at 255 greenwich street, 2 metro tech, and 355 adam street. After searching these locations on a map, we see that the first 10 locations in our plot are clustered. Therefore, we tend to believe that tech jobs are location sensitive. In other words, tech jobs are located within a certain area. More details can be found in an interactive map later in the book.
+
+```{r}
+tech_job %>%
+  filter(!is.na(tech_job$Civil.Service.Title)) %>%
+  group_by(Civil.Service.Title) %>%
+  summarise(mean_salary = mean(Annual_salary)) %>%
+  ggplot(aes(y = reorder(Civil.Service.Title, mean_salary), x = mean_salary)) +
+  ggtitle("Average Annual Salary w.r.t Civil Service Title") +
+  labs(x = "Average Annual Salary", y = "Civil Service Title") + 
+  theme(plot.title = element_text(hjust = 0.5)) + 
+  geom_point(color = "orange")
+```
+This Cleveland dot plot shows the relationship between average annual salaries and civil service title. The salary ranges from less thatn 4000 dollars to almost 12000 dollars. We can also see that the annual salary of Aministrative Business Promot is a lot higher than any other jobs.

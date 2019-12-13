@@ -1,4 +1,4 @@
-# Data sources
+# Data Sources
 Our data come from https://data.cityofnewyork.us/City-Government/NYC-Jobs/kpav-sd4t, which contains current job postings available on the City of New York’s official jobs site http://www.nyc.gov/html/careers/html/search/search.shtml. 
 
 Mingrui is responsible for looking for and collecting the data. Since the data can be directly exported from the website as a `.csv` file, there is no major obstacle for us when gathering the data. After downloading the data from the website, we use the built-in `read.csv` method to read and store the data as a data frame for future manipulation.
